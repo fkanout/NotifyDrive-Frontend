@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers, Response} from '@angular/http';
-import { Storage } from '@ionic/storage';
+import { LocalStorage } from '../providers/storage';
 import { CONSTANT } from '../constant';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
@@ -13,38 +13,26 @@ import {Observable} from "rxjs";
 */
 @Injectable()
 export class Auth {
+    constructor(public http: Http, public storageProvider: LocalStorage) {}
+    
+    getToken =() => this.storageProvider.getToken();
+    
+    login (email, password) {
+        let body = `email=${email}&password=${password}`;
+        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+        return this.http.post(`${CONSTANT.API_URL}/signin`, body, {headers: headers})
+            .map(res => res.json().token && this.storageProvider.saveToken(res.json().token))
+            .catch(this.handleError);
+    }
+        
+    register(email, password){
+        let body = `email=${email}&password=${password}`;
+        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+        return this.http.post(`${CONSTANT.API_URL}/signup`, body, {headers: headers})
+            .map(res => res.json().token && this.storageProvider.saveToken(res.json().token))
+            .catch(this.handleError);
 
-  constructor(public http: Http, public storage: Storage) {
-    console.log('Hello Auth Provider');
-      this.storage.ready().then(() => {
-          console.log('storage is ready ');
-      });
-  }
-
- login (email, password) {
-     let body = `email=${email}&password=${password}`;
-     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-     return this.http.post(`${CONSTANT.API_URL}/signin`, body, {headers: headers})
-         .map(res => res.json().token && this.storage.set('token', res.json().token))
-         .catch(this.handleError);
- }
-
- getToken (){
-    return  this.storage.get('token').then(token=> {
-     
-     console.log(token);
-    return token
-    });
- } 
-
- register(email, password){
-    let body = `email=${email}&password=${password}`;
-    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    return this.http.post(`${CONSTANT.API_URL}/signup`, body, {headers: headers})
-        .map(res => res.json().token && this.storage.set('token', res.json().token))
-        .catch(this.handleError);
-
- }
+    }
 
 
 

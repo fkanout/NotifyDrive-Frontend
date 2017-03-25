@@ -15,7 +15,7 @@ import { NDErrorHandler } from "./error-handler";
 export class User {
 private token: any;
   constructor(public http: Http, public NDerrorHandler: NDErrorHandler, public authProvider: Auth) {
-     this.authProvider.getToken().then(token=> this.token = token);
+    this.token = this.authProvider.getToken();
   }
 
   searchCarPlate(plate){
@@ -42,7 +42,6 @@ private token: any;
   }
 
   getNotifications (){
-    console.log('this Token', this.token);
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization':this.token

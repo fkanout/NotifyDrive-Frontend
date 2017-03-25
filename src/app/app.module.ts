@@ -17,6 +17,8 @@ import { FaqPage } from '../pages/faq/faq';
 
 import { Auth } from '../providers/auth';
 import { User } from '../providers/user';
+import { LocalStorage } from '../providers/storage';
+
 import { NDErrorHandler } from '../providers/error-handler';
 
 @NgModule({
@@ -53,6 +55,6 @@ import { NDErrorHandler } from '../providers/error-handler';
     ParametersPage,
     FaqPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Auth, NDErrorHandler, User]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Auth, NDErrorHandler, User, LocalStorage]
 })
 export class AppModule {}
