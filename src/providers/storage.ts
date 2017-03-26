@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import 'rxjs/add/operator/map';
-import { Observable } from "rxjs/Observable";
-
 /*
   Generated class for the Storage provider.
 
@@ -12,7 +8,7 @@ import { Observable } from "rxjs/Observable";
 */
 @Injectable()
 export class LocalStorage {
-  constructor(public http: Http, public storage: Storage) {
+  constructor (public storage: Storage) {
   }
 
   saveToken = (value) => this.storage.set('token', value);
