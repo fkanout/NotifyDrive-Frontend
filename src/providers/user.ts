@@ -32,8 +32,11 @@ private token: any;
     .catch(this.NDerrorHandler.handleError);
   }
 
-  notifyDriver(carId, ownerId, msgSelected){
-      let body = `carId=${carId}&ownerId=${ownerId}&msgSelected=${msgSelected}`;
+  notifyDriver(carId, ownerId, msgSelected, lat, log){
+    console.log('lat', lat);
+    console.log('log', log);
+    
+      let body = `carId=${carId}&ownerId=${ownerId}&msgSelected=${msgSelected}&lat=${lat}&log=${log}`;
       let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': this.token

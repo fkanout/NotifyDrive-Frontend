@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { MsgListPage } from '../msg-list/msg-list';
 import { User } from '../../providers/user';
+import { GeolocationNative } from '../../providers/geolocation';
 /*
   Generated class for the ChooseMsg page.
 
@@ -17,7 +18,13 @@ export class ChooseMsgPage {
   private selectedMsg: any;
   private readyToSendNotification: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private userProvider: User) {
+  constructor(
+    public geo: GeolocationNative,
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public modalCtrl: ModalController, 
+    private userProvider: User) {
+
    this.car = this.navParams.data;  
   }
 
@@ -39,11 +46,14 @@ export class ChooseMsgPage {
   } 
   sendNotifyDriver(){
     if (this.car._id && this.car.owner && this.selectedMsg){
-        this.userProvider.notifyDriver(this.car._id, this.car.owner, this.selectedMsg).subscribe(
+      this.geo.getGeolocation().then(resp=>{
+         this.userProvider.notifyDriver(this.car._id, this.car.owner, this.selectedMsg, resp.coords.latitude, resp.coords.longitude).subscribe(
             notificationSent => console.log(notificationSent),
             err => console.log('Error'),
             () => console.log('Authentication Complete')
           );
+      })
+       
     }
 
   }

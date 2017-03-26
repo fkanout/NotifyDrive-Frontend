@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PAGES } from'./pages';
 import { PROVIDERS } from './providers';
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation'
 
 @NgModule({
   declarations: [
@@ -17,17 +18,18 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
 
-  ],
+  ],  
   bootstrap: [IonicApp],
   entryComponents:[
     MyApp,
     PAGES
   ],
-  providers: [ 
-    PROVIDERS,
+  providers: [
+    Geolocation,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PROVIDERS
   ]
 })
 export class AppModule {}
