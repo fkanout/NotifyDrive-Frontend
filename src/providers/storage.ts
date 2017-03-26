@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
+import { Observable } from "rxjs/Observable";
 
 /*
   Generated class for the Storage provider.
@@ -11,14 +12,10 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class LocalStorage {
-  public token;
-
   constructor(public http: Http, public storage: Storage) {
-     this.storage.ready().then(() => {
-       this.storage.get('token').then(token => this.token = token)
-      });
   }
 
-  saveToken = (value) => this.storage.set('token', value).then((token => this.token = token));
-  getToken = () => this.token;
+  saveToken = (value) => this.storage.set('token', value);
+  getToken = () => this.storage.get('token');
+  
 }

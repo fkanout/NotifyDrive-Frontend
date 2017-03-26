@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { Auth } from './auth'
+import { Auth } from './auth';
+import { LocalStorage } from './storage'
+
 import { CONSTANT } from '../constant' ;
 import 'rxjs/add/operator/map';
 import { NDErrorHandler } from "./error-handler";
@@ -14,8 +16,9 @@ import { NDErrorHandler } from "./error-handler";
 @Injectable()
 export class User {
 private token: any;
-  constructor(public http: Http, public NDerrorHandler: NDErrorHandler, public authProvider: Auth) {
-    this.token = this.authProvider.getToken();
+  constructor(public http: Http, public NDerrorHandler: NDErrorHandler, public authProvider: Auth, public storageProvider: LocalStorage) {
+      this.token = this.authProvider.getToken();
+   
   }
 
   searchCarPlate(plate){

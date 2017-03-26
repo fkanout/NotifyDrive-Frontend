@@ -72,5 +72,8 @@ export class MorePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MorePage');
   }
+  logout(){
+   
+  }
 
 }

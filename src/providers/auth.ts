@@ -13,16 +13,21 @@ import {Observable} from "rxjs";
 */
 @Injectable()
 export class Auth {
-    constructor(public http: Http, public storageProvider: LocalStorage) {}
-    
-    getToken =() => this.storageProvider.getToken();
+    public token;
+    constructor(public http: Http, public storageProvider: LocalStorage) {
+
+     }
+     getToken = () => this.token;
     
     login (email, password) {
         let body = `email=${email}&password=${password}`;
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         return this.http.post(`${CONSTANT.API_URL}/signin`, body, {headers: headers})
-            .map(res => res.json().token && this.storageProvider.saveToken(res.json().token))
-            .catch(this.handleError);
+            .map(res => {
+                let token = res.json().token;
+                this.storageProvider.saveToken(token) 
+                this.token = token
+            }).catch(this.handleError);
     }
         
     register(email, password){
@@ -32,6 +37,17 @@ export class Auth {
             .map(res => res.json().token && this.storageProvider.saveToken(res.json().token))
             .catch(this.handleError);
 
+    }
+     checkTokenToLogin(token){
+        let headers = new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': token
+    });
+        return this.http.get(`${CONSTANT.API_URL}/checktoken`, {headers: headers})  
+            .map(res => {
+                this.token = token;
+            })
+            .catch(this.handleError);
     }
 
 
