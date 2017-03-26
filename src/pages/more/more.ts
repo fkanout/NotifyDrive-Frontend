@@ -5,6 +5,7 @@ import { CarsPage } from '../cars/cars';
 import { NotificationsPage } from '../notifications/notifications';
 import { ParametersPage } from '../parameters/parameters';
 import { FaqPage } from '../faq/faq'
+import { LogoutPage } from '../logout/logout'
 
 
 /*
@@ -23,6 +24,7 @@ export class MorePage {
   private notificationsPage = NotificationsPage; 
   private parametersPage = ParametersPage;
   private faqPage = FaqPage; 
+  private logoutPage = LogoutPage; 
 
 
 
@@ -62,7 +64,7 @@ export class MorePage {
             {
                 id: 6,
                 name: 'Me déconnecter',
-                page: '/signout',
+                page: this.logoutPage,
                 icon:'log-out'
             }
         ];

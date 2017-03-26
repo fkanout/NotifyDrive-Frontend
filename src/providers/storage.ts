@@ -17,5 +17,6 @@ export class LocalStorage {
 
   saveToken = (value) => this.storage.set('token', value);
   getToken = () => this.storage.get('token');
+  removeTokenToSignout = () => this.storage.clear();
   
 }

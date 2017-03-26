@@ -11,6 +11,7 @@ import { CarsPage } from '../pages/cars/cars';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { ParametersPage } from '../pages/parameters/parameters';
 import { FaqPage } from '../pages/faq/faq';
+import { LogoutPage } from '../pages/logout/logout';
 
 
 export const PAGES =[
@@ -24,5 +25,6 @@ export const PAGES =[
     CarsPage,
     NotificationsPage,
     ParametersPage,
-    FaqPage
+    FaqPage,
+    LogoutPage
 ]
