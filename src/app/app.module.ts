@@ -8,6 +8,7 @@ import { PAGES } from'./pages';
 import { PROVIDERS } from './providers';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation'
+import { Push } from '@ionic-native/push';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { Geolocation } from '@ionic-native/geolocation'
   ],
   providers: [
     Geolocation,
+    Push,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

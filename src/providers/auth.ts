@@ -14,11 +14,11 @@ import {Observable} from "rxjs";
 @Injectable()
 export class Auth {
     public token;
+    public notificationDeviceToken;
     constructor(public http: Http, public storageProvider: LocalStorage) {
 
      }
      getToken = () => this.token;
-    
     login (email, password) {
         let body = `email=${email}&password=${password}`;
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
@@ -31,7 +31,7 @@ export class Auth {
     }
         
     register(email, password){
-        let body = `email=${email}&password=${password}`;
+        let body = `email=${email}&password=${password}&deviceToken=${this.notificationDeviceToken}`;
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         return this.http.post(`${CONSTANT.API_URL}/signup`, body, {headers: headers})
             .map(res => res.json().token && this.storageProvider.saveToken(res.json().token))
@@ -48,6 +48,10 @@ export class Auth {
                 this.token = token;
             })
             .catch(this.handleError);
+    }
+    setNotificationDeviceToken(token){
+        this.notificationDeviceToken = token;
+        console.log(" this.notificationDeviceToken",  this.notificationDeviceToken);
     }
 
 

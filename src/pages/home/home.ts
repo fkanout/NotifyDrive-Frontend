@@ -42,4 +42,13 @@ export class HomePage {
           );
 
   }
+   register(email, password){
+    this.auth.register(email, password)
+        .subscribe(
+            registred => this.navCtrl.setRoot(MainPage),
+            err => console.log('Error'),
+            () => console.log('Registeration Complete')
+          );
+
+  }
 }

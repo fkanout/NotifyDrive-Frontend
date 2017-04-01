@@ -16,5 +16,5 @@
     <ion-input #password placeholder="Password" type="password"></ion-input>
   </ion-item>
   <button ion-button (click)="login(email.value, password.value)" >Login</button>
-   <button ion-button> Register</button>
+   <button ion-button (click)="register(email.value, password.value)"> Register</button>
 </ion-content>
