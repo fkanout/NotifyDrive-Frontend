@@ -9,11 +9,24 @@ import { Geolocation } from '@ionic-native/geolocation';
 */
 @Injectable()
 export class GeolocationNative {
- constructor(private geolocation: Geolocation) {
-}
+ latitude = null;
+ longitude = null;
 
-  getGeolocation(): Promise<any>{
-    return this.geolocation.getCurrentPosition()
-} 
+ constructor(private geolocation: Geolocation) {
+
+   geolocation.watchPosition()
+   .filter((p) => p.coords !== undefined)
+   .subscribe(pos => {
+     this.latitude = pos.coords.latitude;
+     this.longitude = pos.coords.longitude;
+      });
+
+ }
+
+  getGeolocation () {
+    return  { latitude : this.latitude, longitude: this.longitude }
+  } 
+  
+
 
 }

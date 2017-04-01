@@ -46,13 +46,13 @@ export class ChooseMsgPage {
   } 
   sendNotifyDriver(){
     if (this.car._id && this.car.owner && this.selectedMsg){
-      this.geo.getGeolocation().then(resp=>{
-         this.userProvider.notifyDriver(this.car._id, this.car.owner, this.selectedMsg, resp.coords.latitude, resp.coords.longitude).subscribe(
+      let geolocation =  this.geo.getGeolocation()
+         this.userProvider.notifyDriver(this.car._id, this.car.owner, this.selectedMsg, geolocation.latitude, geolocation.longitude).subscribe(
             notificationSent => console.log(notificationSent),
             err => console.log('Error'),
             () => console.log('Authentication Complete')
           );
-      })
+
        
     }
 

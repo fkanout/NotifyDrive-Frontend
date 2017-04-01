@@ -5,8 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LocalStorage } from '../providers/storage';
-
-
+import { GeolocationNative } from '../providers/geolocation';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +13,7 @@ import { LocalStorage } from '../providers/storage';
 export class MyApp {
   rootPage = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storageProvider: LocalStorage) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, storageProvider: LocalStorage, geoLocationNative: GeolocationNative) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
