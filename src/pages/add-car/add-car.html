@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AddCar page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>add-car</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-icon  name="info" item-left primary></ion-icon>
+    <ion-input #carPlate placeholder="Car plate"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="info" item-left primary></ion-icon>
+    <ion-input #carMark placeholder="Car mark" ></ion-input>
+  </ion-item>
+
+   <ion-item>
+    <ion-icon name="info" item-left primary></ion-icon>
+    <ion-input #carModel placeholder="Car model" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="info" item-left primary></ion-icon>
+    <ion-input #carYear placeholder="Car year" ></ion-input>
+  </ion-item>
+  
+  <button ion-button (click)="addCar(carPlate.value, carMark.value, carModel.value, carYear.value)" >Ajouter</button>
+  
+</ion-content>

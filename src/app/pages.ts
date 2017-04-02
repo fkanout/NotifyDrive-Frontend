@@ -12,7 +12,7 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { ParametersPage } from '../pages/parameters/parameters';
 import { FaqPage } from '../pages/faq/faq';
 import { LogoutPage } from '../pages/logout/logout';
-
+import { AddCarPage } from '../pages/add-car/add-car';
 
 export const PAGES =[
     HomePage,
@@ -26,5 +26,6 @@ export const PAGES =[
     NotificationsPage,
     ParametersPage,
     FaqPage,
-    LogoutPage
+    LogoutPage,
+    AddCarPage
 ]
