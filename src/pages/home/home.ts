@@ -16,19 +16,18 @@ export class HomePage {
   
 
   }
-  ionViewDidLoad(){
+   ionViewDidLoad(){
     let loader = this.loadingCtrl.create({
       content: "Authentication...",
     });
     loader.present();
 
-    this.storageProvider.getToken().then(token=>{
-      if (token){
+ 
+     this.storageProvider.getTokenFirstTime().then(token=>{
         this.auth.checkTokenToLogin(token).subscribe(
           (validToken=> this.navCtrl.setRoot(MainPage)),
-          (err=> console.log(err))
-        )
-      }
+          (err=> console.log(err)))
+      
     })
     loader.dismiss();
 

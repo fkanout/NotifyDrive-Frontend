@@ -15,9 +15,9 @@ import { NDErrorHandler } from "./error-handler";
 */
 @Injectable()
 export class User {
-private token: any;
+private token;
   constructor(public http: Http, public NDerrorHandler: NDErrorHandler, public authProvider: Auth, public storageProvider: LocalStorage) {
-      this.token = this.authProvider.getToken();
+      this.token = this.storageProvider.getToken();
    
   }
 
@@ -65,5 +65,20 @@ private token: any;
    return this.http.get(`${CONSTANT.API_URL}/car/getmycars`, {headers: headers})
    .map(res=> res.json())
    .catch(this.NDerrorHandler.handleError)
+  }
+
+  addCar(carPlate, carMark, carModel, carYear){
+    console.log(this.token);
+    let body = `plate=${carPlate}&mark=${carMark}&model=${carModel}&year=${carYear}`;
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization':this.token
+    });
+    return this.http.post(`${CONSTANT.API_URL}/car/add`, body, {headers: headers})
+     .map(res=> res.json())
+     .catch(this.NDerrorHandler.handleError)
+  
+  
+
   }
 }

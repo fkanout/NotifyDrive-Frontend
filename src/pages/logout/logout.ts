@@ -18,9 +18,9 @@ export class LogoutPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private sotrageProvider: LocalStorage) {}
 
   ionViewDidLoad() {
-    this.sotrageProvider.removeTokenToSignout().then(done=>{
-      this.navCtrl.setRoot(HomePage);
-    })
+    this.sotrageProvider.removeTokenToSignout()
+    this.navCtrl.setRoot(HomePage);
+
   }
 
 }
