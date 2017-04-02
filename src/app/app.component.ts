@@ -17,6 +17,7 @@ import { Auth } from '../providers/auth';
 export class MyApp {
   rootPage = HomePage;
   public notificationDeviceToken;
+  public deviceInfo;
   
 
   constructor(
@@ -29,7 +30,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-     this.initPushNotification();
+      this.initPushNotification();
     });
    
 
@@ -59,8 +60,10 @@ export class MyApp {
 }
   registerToken(registration){
     console.log('registerToken');
-        this.authProvider.setNotificationDeviceToken(registration.registrationId);
+    this.authProvider.setDeviceToken(registration.registrationId);
   } 
+
+
 
 
   

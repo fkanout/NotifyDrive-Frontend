@@ -9,6 +9,8 @@ import { PROVIDERS } from './providers';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation'
 import { Push } from '@ionic-native/push';
+import { Device } from '@ionic-native/device';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { Push } from '@ionic-native/push';
   ],
   providers: [
     Geolocation,
+    Device,
     Push,
     StatusBar,
     SplashScreen,

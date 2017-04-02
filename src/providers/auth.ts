@@ -4,6 +4,7 @@ import { LocalStorage } from '../providers/storage';
 import { CONSTANT } from '../constant';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
+import { Device } from '@ionic-native/device';
 
 /*
   Generated class for the Auth provider.
@@ -13,20 +14,32 @@ import {Observable} from "rxjs";
 */
 @Injectable()
 export class Auth {
-    public token;
     public notificationDeviceToken;
-    constructor(public http: Http, public storageProvider: LocalStorage) {
+    public deviceInfo;
+    constructor(public http: Http, public storageProvider: LocalStorage, private device: Device) {}
 
-     }
-     getToken = () => this.token;
     login (email, password) {
-        let body = `email=${email}&password=${password}`;
-        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-        return this.http.post(`${CONSTANT.API_URL}/signin`, body, {headers: headers})
+        let bodyJSON = {
+            email,
+            password,
+            deviceToken: this.notificationDeviceToken,
+            device: {
+                cordova : this.device.cordova,
+                model: this.device.model,
+                platform :this.device.platform,
+                uuid: this.device.uuid,
+                version: this.device.version,
+                manufacturer: this.device.manufacturer,
+                isVirtual: this.device.isVirtual,
+                serial:this.device.serial
+            }
+        }
+        // let body = `email=${email}&password=${password}&notificationDeviceToken=${this.notificationDeviceToken}`;
+        let headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post(`${CONSTANT.API_URL}/signin`, bodyJSON, {headers: headers})
             .map(res => {
                 let token = res.json().token;
                 this.storageProvider.saveToken(token) 
-                this.token = token
             }).catch(this.handleError);
     }
         
@@ -44,12 +57,10 @@ export class Auth {
             'Authorization': token
     });
         return this.http.get(`${CONSTANT.API_URL}/checktoken`, {headers: headers})  
-            .map(res => {
-                this.token = token;
-            })
+            .map(res => true)
             .catch(this.handleError);
     }
-    setNotificationDeviceToken(token){
+    setDeviceToken(token){
         this.notificationDeviceToken = token;
         console.log(" this.notificationDeviceToken",  this.notificationDeviceToken);
     }
