@@ -14,18 +14,8 @@
 
 
 <ion-content padding>
- <ion-list no-lines>
-    <ion-item *ngFor="let item of notificationsList | async" [navPush]="item.carPlate">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-        {{ item.carPlate }}
-        {{item.sentMsg }}
-        <br>
-        {{item.geoLocation.lat}}
-              <br>
-        {{item.geoLocation.log}}
-  <br>
-         {{item.geoLocation.formatedAddress}}
-        
-    </ion-item>
-  </ion-list>
+  <ion-tabs >
+    <ion-tab tabIcon="paper-plane" tabTitle="Sent" [root]="notificationSentPage"></ion-tab>    
+    <ion-tab tabIcon="log-in" tabTitle="Received" [root]="notificationReceivedPage"></ion-tab>
+  </ion-tabs>
 </ion-content>

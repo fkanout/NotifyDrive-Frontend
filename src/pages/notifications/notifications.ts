@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { User } from '../../providers/user';
 import { Observable } from "rxjs/Observable";
+import {NotificationReceivedPage } from '../notification-received/notification-received';
+import {NotificationSentPage } from '../notification-sent/notification-sent';
+
 /*
+
   Generated class for the Notifications page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
@@ -13,12 +16,18 @@ import { Observable } from "rxjs/Observable";
   templateUrl: 'notifications.html'
 })
 export class NotificationsPage {
-  private notificationsList: Observable<any>;
+  public notificationReceivedPage;
+  public notificationSentPage;
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userProvider: User) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  this.notificationReceivedPage = NotificationReceivedPage;
+  this.notificationSentPage = NotificationSentPage;
+  
+
+  }
 
   ionViewDidLoad() {
-    this.notificationsList =  this.userProvider.getNotifications()
 
   }
 

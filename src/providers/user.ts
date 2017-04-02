@@ -47,12 +47,22 @@ private token;
 
   }
 
-  getNotifications (){
+  getReceivedNotifications (){
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization':this.token
     });
    return this.http.get(`${CONSTANT.API_URL}/getreceivednotifications`, {headers: headers})
+   .map(res=> res.json())
+   .catch(this.NDerrorHandler.handleError)
+  }
+
+  getSentNotifications (){
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization':this.token
+    });
+   return this.http.get(`${CONSTANT.API_URL}/getsentnotifications`, {headers: headers})
    .map(res=> res.json())
    .catch(this.NDerrorHandler.handleError)
   }
