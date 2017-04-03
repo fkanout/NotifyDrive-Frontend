@@ -16,7 +16,6 @@ $toolbar-md-height: 100px;
 $toolbar-background: white;
 $tabs-background: white;
 
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -26,7 +25,9 @@ $tabs-background: white;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #387ef5,
+
+  primary:    #e62739,
+  // primary:    #387ef5,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
