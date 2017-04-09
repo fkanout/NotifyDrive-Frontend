@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { User } from '../../providers/user'
 import { ChooseMsgPage } from '../choose-msg/choose-msg'
+import { WhatSendToUserPage } from '../what-send-to-user/what-send-to-user';
 /*
   Generated class for the Type page.
 
@@ -24,7 +25,7 @@ private chooseMsgPage: any;
   search(plate){
     if (plate.value !== ''){
       this.userProvider.searchCarPlate(plate.value.toLowerCase()).subscribe(
-          car=> this.navCtrl.push(ChooseMsgPage,car),
+          car=> this.navCtrl.push(WhatSendToUserPage,car),
           err=> console.log(err),
           ()=> console.log('Done searching car plate !'))
     }

@@ -47,6 +47,18 @@ private token;
 
   }
 
+  evaluateDriver(carId, ownerId, evaluation){
+      let body = `carId=${carId}&ownerId=${ownerId}&evaluation=${evaluation}`;
+      let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': this.token
+    });
+   return this.http.post(`${CONSTANT.API_URL}/evaluateDriver`,body,{headers: headers})
+    .map(res=> res.json())
+    .catch(this.NDerrorHandler.handleError)
+
+  }
+
   getReceivedNotifications (){
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -87,8 +99,5 @@ private token;
     return this.http.post(`${CONSTANT.API_URL}/car/add`, body, {headers: headers})
      .map(res=> res.json())
      .catch(this.NDerrorHandler.handleError)
-  
-  
-
   }
 }

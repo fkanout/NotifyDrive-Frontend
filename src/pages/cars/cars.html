@@ -23,10 +23,15 @@
 <ion-content padding>
  <ion-list no-lines>
     <ion-item *ngFor="let car of carsList | async" [navPush]="car.plate">
-        {{ car.plate }}
-        {{ car.year }}
-        {{ car.model }}
-        {{ car.addedAt }}
+        {{ car.plate }} <br>
+        {{ car.year }} <br>
+        {{ car.model }} <br>
+        {{ car.addedAt }} <br>
+        Evaluation:<br>
+        Positive:
+         {{ car.evaluation.positive.length }}<br>
+        Negative
+          {{ car.evaluation.negative.length }}
     </ion-item>
   </ion-list>
 </ion-content>

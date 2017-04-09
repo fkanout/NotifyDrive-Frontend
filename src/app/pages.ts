@@ -15,7 +15,7 @@ import { LogoutPage } from '../pages/logout/logout';
 import { AddCarPage } from '../pages/add-car/add-car';
 import { NotificationReceivedPage } from '../pages/notification-received/notification-received';
 import { NotificationSentPage } from '../pages/notification-sent/notification-sent';
-
+import { WhatSendToUserPage} from '../pages/what-send-to-user/what-send-to-user';
 
 export const PAGES =[
     HomePage,
@@ -32,5 +32,6 @@ export const PAGES =[
     LogoutPage,
     AddCarPage,
     NotificationReceivedPage,
-    NotificationSentPage
+    NotificationSentPage,
+    WhatSendToUserPage
 ]
