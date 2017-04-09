@@ -14,6 +14,17 @@
 
 
 <ion-content padding>
+
+   <ion-list no-lines>
+    <ion-item *ngFor="let car of carsList | async" [navPush]="car.plate">
+       <plate-element region="92" plateNumber={{car.plate}} country="F"></plate-element>
+        Evaluation:<br>
+        Positive:
+         {{ car.evaluation.positive.length }}<br>
+        Negative
+          {{ car.evaluation.negative.length }}
+    </ion-item>
+  </ion-list>
   <button ion-button [navPush]="typePage" > Saisir</button>
  <button ion-button> Scaner</button>
  <button ion-button [navPush]="morePage" > Plus..</button>

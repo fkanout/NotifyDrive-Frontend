@@ -1,7 +1,10 @@
+import { Observable } from 'rxjs/Rx';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { TypePage } from '../type/type';
-import { MorePage } from '../more/more'
+import { MorePage } from '../more/more';
+import { User } from '../../providers/user';
+
 /*
   Generated class for the Main page.
 
@@ -15,13 +18,16 @@ import { MorePage } from '../more/more'
 export class MainPage {
   private typePage;
   private morePage;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private carsList: Observable<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: User) {
      this.typePage = TypePage;
      this.morePage = MorePage;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MainPage');
+    this.carsList = this.userProvider.getMyCars();
+
   }
 
 }

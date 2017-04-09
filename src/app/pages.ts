@@ -16,7 +16,7 @@ import { AddCarPage } from '../pages/add-car/add-car';
 import { NotificationReceivedPage } from '../pages/notification-received/notification-received';
 import { NotificationSentPage } from '../pages/notification-sent/notification-sent';
 import { WhatSendToUserPage} from '../pages/what-send-to-user/what-send-to-user';
-
+import { Plate } from '../pages/plate/plate'
 export const PAGES =[
     HomePage,
     MainPage,
@@ -33,5 +33,6 @@ export const PAGES =[
     AddCarPage,
     NotificationReceivedPage,
     NotificationSentPage,
-    WhatSendToUserPage
+    WhatSendToUserPage,
+    Plate
 ]

@@ -1,0 +1,80 @@
+plate-element {
+    .plate{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        height: 60px;
+        width: 100%;
+        border: 2px black solid;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        max-width: 300px;
+        font-family: "Bebas";
+    }
+    
+    .plateLeftSide{
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        background-color:#003399;
+        color: white;
+        font-weight: 700;
+        justify-content: center;
+        margin: 0px;
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .plateRightSide{
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        background-color:#003399;
+        color: white;
+        font-weight: 700;
+        justify-content: center;
+        margin: 0px;
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+    }
+    .firstLetterCountry{
+        padding-bottom: 20px;
+        font-size: 15px;
+    }
+    .imgEuropContainer{
+        padding-top: 20px;
+    }
+    .plateNumber{
+        flex: 15;
+        font-size: 2.1em;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        font-weight: 700;
+        align-self: center;
+        letter-spacing: 0.1em;
+        padding-bottom: 5px;
+    }
+    .imgEurop{
+        height: 20px;
+        width: 20px;
+    }
+    .regionImgContainer{
+        margin: 4px;
+        background-color: white;
+    }
+    .regionImg{
+        height: 20px;
+        width: 20px;
+    }
+    .regionNumber{
+        padding-bottom: 5px;
+        font-size: 12px;
+    }
+}
