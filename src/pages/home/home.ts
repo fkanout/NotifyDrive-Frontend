@@ -25,11 +25,14 @@ export class HomePage {
  
      this.storageProvider.getTokenFirstTime().then(token=>{
         this.auth.checkTokenToLogin(token).subscribe(
-          (validToken=> this.navCtrl.setRoot(MainPage)),
+          (validToken=> {
+            this.navCtrl.setRoot(MainPage),
+            loader.dismiss();
+
+          }),
           (err=> console.log(err)))
       
     })
-    loader.dismiss();
 
   }
   login(email, password){
