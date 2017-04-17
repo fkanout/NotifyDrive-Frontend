@@ -28,6 +28,8 @@ plate-element {
         padding: 0px;
         padding-top: 20px;
         padding-bottom: 20px;
+        height: 56px;
+
     }
     .plateRightSide{
         display: flex;
@@ -41,6 +43,8 @@ plate-element {
         padding: 0px;
         padding-top: 20px;
         padding-bottom: 20px;
+        height: 56px;
+
 
     }
     .firstLetterCountry{
@@ -52,7 +56,7 @@ plate-element {
     }
     .plateNumber{
         flex: 15;
-        font-size: 2.1em;
+        font-size: 34px;
         justify-content: center;
         align-content: center;
         text-align: center;

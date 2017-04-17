@@ -33,7 +33,7 @@ export class MorePage {
     this.moreList = [
             {
                 id: 0,
-                name: 'Mes Voitures',
+                name: 'My Car',
                 page: this.carsPage,
                 icon: 'car'
             },
@@ -57,13 +57,13 @@ export class MorePage {
             },
              {
                 id: 4,
-                name: 'Historique',
+                name: 'Historic',
                 pagepage: '/history',
                 icon: 'repeat'
             },
             {
                 id: 6,
-                name: 'Me déconnecter',
+                name: 'Disconnect',
                 page: this.logoutPage,
                 icon:'log-out'
             }

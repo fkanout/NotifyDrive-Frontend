@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>main</ion-title>
+    <ion-title>Main Page</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,16 +16,40 @@
 <ion-content padding>
 
    <ion-list no-lines>
+    
     <ion-item *ngFor="let car of carsList | async" [navPush]="car.plate">
+       Your car plate:
+              <br>
+
        <plate-element region="92" plateNumber={{car.plate}} country="F"></plate-element>
-        Evaluation:<br>
+       <br>
+        Your total evaluation is :
+         <img style="height: 20px" src="https://sharebee.ca/img/av-stars-5-0.png">
+
+     <!---   Evaluation:<br>
         Positive:
          {{ car.evaluation.positive.length }}<br>
         Negative
           {{ car.evaluation.negative.length }}
+          -->
     </ion-item>
   </ion-list>
-  <button ion-button [navPush]="typePage" > Saisir</button>
- <button ion-button> Scaner</button>
- <button ion-button [navPush]="morePage" > Plus..</button>
+  <button full ion-button icon-left [navPush]="typePage" > 
+      <ion-icon ios="ios-create" md="md-create"></ion-icon>          
+    Type Plate
+    </button>
+
+ <button full ion-button  icon-left> 
+    <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+   Scan Plate </button>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <button style=" bottom: 1px;" icon-left color="dark" full ion-button [navPush]="morePage" >
+     <ion-icon ios="ios-cog" md="md-cog"></ion-icon>
+    Plus..</button>
+
+ 
 </ion-content>

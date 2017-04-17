@@ -14,8 +14,11 @@
 
 
 <ion-content padding>
-  <ion-input #plate>
-
-  </ion-input>
-  <button ion-button (click)="search(plate)">Search</button>
+  <ion-item>
+    <ion-input #plate type="text" placeholder="Plate number"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  
+  <button full big ion-button (click)="search(plate)">Search</button>
 </ion-content>

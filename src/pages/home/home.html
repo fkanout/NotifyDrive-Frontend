@@ -1,13 +1,13 @@
 <ion-header no-border>
   <ion-navbar>
     <ion-title>
-      Faisal KANOUT
+      Notfy Driver
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
+  <ion-item padding>
     <ion-icon  name="mail" item-left primary></ion-icon>
     <ion-input #email placeholder="Email" type="email"></ion-input>
   </ion-item>
@@ -15,6 +15,12 @@
     <ion-icon name="lock" item-left primary></ion-icon>
     <ion-input #password placeholder="Password" type="password"></ion-input>
   </ion-item>
-  <button ion-button (click)="login(email.value, password.value)" >Login</button>
-   <button ion-button (click)="register(email.value, password.value)"> Register</button>
+<div style="padding-top:15em">
+ <button full ion-button (click)="login(email.value, password.value)" >Login</button>
+ <div style="padding-top:1em;" >
+
+ </div>
+  <button  full ion-button (click)="register(email.value, password.value)"> Register</button>
+</div>
+ 
 </ion-content>
