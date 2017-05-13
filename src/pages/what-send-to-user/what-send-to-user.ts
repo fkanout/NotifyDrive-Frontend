@@ -10,7 +10,8 @@ import { User } from '../../providers/user';
 */
 @Component({
   selector: 'page-what-send-to-user',
-  templateUrl: 'what-send-to-user.html'
+  templateUrl: 'what-send-to-user.html',
+  styleUrls: ['/pages/what-send-to-user/font-awesome.min.css']
 })
 export class WhatSendToUserPage {
   private car;
