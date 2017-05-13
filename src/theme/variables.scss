@@ -1,9 +1,12 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-$font-path: "../assets/fonts";
 
 @import "ionic.globals";
 
+$font-family-base: "RobotoMonoForPowerline-Light";
+$font-family-ios-base: $font-family-base;
+$font-family-md-base: $font-family-base;
+$font-family-wp-base: $font-family-base;
 
 // Shared Variables
 // --------------------------------------------------
