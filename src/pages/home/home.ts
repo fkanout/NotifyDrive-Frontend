@@ -25,12 +25,16 @@ export class HomePage {
  
      this.storageProvider.getTokenFirstTime().then(token=>{
         this.auth.checkTokenToLogin(token).subscribe(
-          (validToken=> {
+          validToken=> {
             this.navCtrl.setRoot(MainPage),
             loader.dismiss();
 
-          }),
-          (err=> console.log(err)))
+          },
+          err=> {
+            loader.dismiss();
+            console.log(err)
+          }
+        )
       
     })
 
