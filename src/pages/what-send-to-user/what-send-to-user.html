@@ -19,19 +19,6 @@
   <br>
   Evaluation :
   <br>
- <img style="height: 20px" src="https://sharebee.ca/img/av-stars-5-0.png">
-   <br>
-
-    <button ion-button icon-left (click) = "evaluateDriver('positive')">
-      <ion-icon name="happy"></ion-icon>
-      Courtoisie
-    </button>
-
-     <button ion-button icon-left (click) = "evaluateDriver('negative')">
-      <ion-icon name="sad"></ion-icon>
-      Imprudence
-    </button>
-
     <fieldset class="rating">
       <input type="radio" id="star5" name="rating" value="5" />
       <label class = "full" for="star5" title="Awesome - 5 stars"></label>
@@ -64,6 +51,17 @@
       <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
       
     </fieldset>
+
+     <button ion-button icon-left (click) = "evaluateDriver('positive')">
+      <ion-icon name="happy"></ion-icon>
+      Courtoisie
+    </button>
+
+     <button ion-button icon-left (click) = "evaluateDriver('negative')">
+      <ion-icon name="sad"></ion-icon>
+      Imprudence
+    </button>
+
 
 
  
