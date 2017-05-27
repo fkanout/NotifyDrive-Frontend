@@ -3,9 +3,11 @@ import { Http, Headers } from '@angular/http';
 import { Auth } from './auth';
 import { LocalStorage } from './storage'
 
+
 import { CONSTANT } from '../constant' ;
 import 'rxjs/add/operator/map';
 import { NDErrorHandler } from "./error-handler";
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 
 /*
   Generated class for the User provider.
@@ -16,7 +18,11 @@ import { NDErrorHandler } from "./error-handler";
 @Injectable()
 export class User {
 private token;
-  constructor(public http: Http, public NDerrorHandler: NDErrorHandler, public authProvider: Auth, public storageProvider: LocalStorage) {
+  constructor(
+    public http: Http, public NDerrorHandler: NDErrorHandler,
+    public authProvider: Auth,
+    public storageProvider: LocalStorage,
+    private transfer: Transfer) {
       this.token = this.storageProvider.getToken();
    
   }
@@ -30,6 +36,39 @@ private token;
     return this.http.post(`${CONSTANT.API_URL}/car/search`, body,  {headers: headers})
     .map(res => res.json())
     .catch(this.NDerrorHandler.handleError);
+  }
+
+  getCarPlateViaCRM(image){
+    
+    // let body = `image=${image}`;
+    // let headers = new Headers({
+    //   'Content-Type': 'multipart/form-data',
+    //   'Authorization': this.token
+    // });
+    let options1: FileUploadOptions = {
+         httpMethod: 'POST',
+         fileKey: 'file',
+         fileName: 'name.jpg',
+         mimeType: "image/jpeg",
+         headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': this.token
+        }
+      }
+      const fileTransfer: TransferObject = this.transfer.create();
+      fileTransfer.upload(image, `${CONSTANT.API_URL}/imagecrm`, options1)
+      .then((data) => {
+        // success
+        alert(data);
+      }, (err) => {
+        // error
+        alert("error"+JSON.stringify(err));
+      });
+
+    // return this.http.post(`${CONSTANT.API_URL}/imagecrm`, body,  {headers: headers})
+    // .map(res => res.json())
+    // .catch(this.NDerrorHandler.handleError);
+
   }
 
   notifyDriver(carId, ownerId, msgSelected, lat, log){
