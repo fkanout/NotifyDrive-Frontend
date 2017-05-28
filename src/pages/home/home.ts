@@ -12,7 +12,12 @@ import { MainPage } from '../main/main';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public auth: Auth, private storageProvider: LocalStorage, private loadingCtrl: LoadingController ) {
+  constructor(
+    public navCtrl: NavController,
+    public auth: Auth,
+    private storageProvider: LocalStorage,
+    private loadingCtrl: LoadingController
+    ) {
   
 
   }
@@ -42,7 +47,14 @@ export class HomePage {
   login(email, password){
     this.auth.login(email, password)
         .subscribe(
-            logged => this.navCtrl.setRoot(MainPage),
+            logged => {
+              this.storageProvider.saveToken(logged).
+              then(done=>{
+                 this.navCtrl.setRoot(MainPage)
+              }).catch(err=>{
+                alert('Can not save Token')
+              });
+            },
             err => console.log('Error'),
             () => console.log('Authentication Complete')
           );

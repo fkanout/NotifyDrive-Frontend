@@ -40,6 +40,7 @@ export class Auth {
             .map(res => {
                 let token = res.json().token;
                 this.storageProvider.saveToken(token) 
+                return token;
             }).catch(this.handleError);
     }
         
