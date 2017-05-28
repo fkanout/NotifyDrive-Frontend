@@ -1,6 +1,5 @@
 {
   "name": "notifyDriver",
   "app_id": "9411a017",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }
