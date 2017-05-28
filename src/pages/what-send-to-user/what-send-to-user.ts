@@ -15,7 +15,6 @@ import { User } from '../../providers/user';
 })
 export class WhatSendToUserPage {
   private car;
-  private chooseMsgPage = ChooseMsgPage;
   constructor(public navCtrl: NavController, public navParams: NavParams,public userProvider: User) {
        this.car = this.navParams.data;  
 

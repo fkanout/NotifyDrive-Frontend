@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Observable } from "rxjs/Observable";
-import {NotificationReceivedPage } from '../notification-received/notification-received';
-import {NotificationSentPage } from '../notification-sent/notification-sent';
+import { NotificationReceivedPage } from '../notification-received/notification-received';
+import { NotificationSentPage } from '../notification-sent/notification-sent';
 
 /*
 

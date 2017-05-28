@@ -4,8 +4,8 @@ import { NavController, NavParams,ToastController, Platform } from 'ionic-angula
 import { TypePage } from '../type/type';
 import { MorePage } from '../more/more';
 import { User } from '../../providers/user';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { Camera } from '@ionic-native/camera';
+import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 declare var cordova: any;

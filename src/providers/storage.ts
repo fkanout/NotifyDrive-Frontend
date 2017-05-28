@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Auth } from '../providers/auth';
 /*
 
   Generated class for the Storage provider.
