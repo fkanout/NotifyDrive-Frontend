@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { LocalStorage } from '../../providers/storage';
+import { User } from '../../providers/user';
+
 import { HomePage } from '../home/home';
 /*
   Generated class for the Signout page.
@@ -15,10 +17,17 @@ import { HomePage } from '../home/home';
 })
 export class LogoutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private sotrageProvider: LocalStorage) {}
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private userProvider: User,
+    private sotrageProvider: LocalStorage
+    
+    ) {}
 
   ionViewDidLoad() {
     this.sotrageProvider.removeTokenToSignout()
+    // this.userProvider.removeToken();
     this.navCtrl.setRoot(HomePage);
 
   }

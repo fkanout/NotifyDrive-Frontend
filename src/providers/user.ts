@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Auth } from './auth';
 import { LocalStorage } from './storage'
-
-
 import { CONSTANT } from '../constant' ;
 import 'rxjs/add/operator/map';
 import { NDErrorHandler } from "./error-handler";
@@ -22,16 +20,14 @@ private token;
     public http: Http, public NDerrorHandler: NDErrorHandler,
     public authProvider: Auth,
     public storageProvider: LocalStorage,
-    private transfer: Transfer) {
-      this.token = this.storageProvider.getToken();
-   
-  }
+    private transfer: Transfer) 
+    {}
 
   searchCarPlate(plate){
     let body = `plate=${plate}`;
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': this.token
+      'Authorization': this.storageProvider.getToken()
     });
     return this.http.post(`${CONSTANT.API_URL}/car/search`, body,  {headers: headers})
     .map(res => res.json())
@@ -78,7 +74,7 @@ private token;
       let body = `carId=${carId}&ownerId=${ownerId}&msgSelected=${msgSelected}&lat=${lat}&log=${log}`;
       let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': this.token
+      'Authorization': this.storageProvider.getToken()
     });
    return this.http.post(`${CONSTANT.API_URL}/notifydriver`,body,{headers: headers})
     .map(res=> res.json())
@@ -90,7 +86,7 @@ private token;
       let body = `carId=${carId}&ownerId=${ownerId}&evaluation=${evaluation}`;
       let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': this.token
+      'Authorization': this.storageProvider.getToken()
     });
    return this.http.post(`${CONSTANT.API_URL}/evaluateDriver`,body,{headers: headers})
     .map(res=> res.json())
@@ -101,7 +97,7 @@ private token;
   getReceivedNotifications (){
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization':this.token
+      'Authorization': this.storageProvider.getToken()
     });
    return this.http.get(`${CONSTANT.API_URL}/getreceivednotifications`, {headers: headers})
    .map(res=> res.json())
@@ -111,7 +107,7 @@ private token;
   getSentNotifications (){
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization':this.token
+      'Authorization': this.storageProvider.getToken()
     });
    return this.http.get(`${CONSTANT.API_URL}/getsentnotifications`, {headers: headers})
    .map(res=> res.json())
@@ -121,19 +117,18 @@ private token;
   getMyCars (){
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization':this.token
+      'Authorization': this.storageProvider.getToken()
     });
-   return this.http.get(`${CONSTANT.API_URL}/car/getmycars`, {headers: headers})
-   .map(res=> res.json())
-   .catch(this.NDerrorHandler.handleError)
+    return this.http.get(`${CONSTANT.API_URL}/car/getmycars`, {headers: headers})
+    .map(res=> res.json())
+    .catch(this.NDerrorHandler.handleError)
   }
 
   addCar(carPlate, carMark, carModel, carYear){
-    console.log(this.token);
     let body = `plate=${carPlate}&mark=${carMark}&model=${carModel}&year=${carYear}`;
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization':this.token
+      'Authorization':this.storageProvider.getToken()
     });
     return this.http.post(`${CONSTANT.API_URL}/car/add`, body, {headers: headers})
      .map(res=> res.json())
