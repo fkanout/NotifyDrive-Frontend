@@ -12,30 +12,22 @@ export class LocalStorage {
   public token: string = null;
 
   constructor (public storage: Storage) {
-    console.log('init localStorage')
-     storage.ready().then(() => {
-       storage.get('token').then((token) => {
-         console.log('Token in place', this.token);
-         this.token = token;
-       }).catch(err=> console.log('there is no token to init'));
-     });
+    storage.ready()
+    .then(() => {
+      storage.get('token')
+      .then(token => this.token = token)
+      .catch(err => console.log('there is no token to init'))})
+    .catch(err => console.log(err));
   }
 
-  saveToken = (value) => this.storage.set('token', value).then(token=>{
-    console.log('Token is saved');
-    this.token = token;
-  });
-
+  saveToken (value: string): Promise<string> {
+    return this.storage.set('token', value)
+    .then(token => this.token = token)
+    .catch(err=> console.log(err))
+  }
   getToken = () => this.token;
 
   getTokenFirstTime = () => this.storage.get('token');
-
-  //  this.storage.get('token').then((token) => {
-  //        console.log('Token in place first time', this.token);
-  //        this.token = token;
-  //      }).catch(err=> console.log('there is no token to init'));
-  //  }
-  
 
   removeTokenToSignout = () => {
     console.log('Every thing is cleaned');

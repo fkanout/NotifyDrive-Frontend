@@ -17,47 +17,41 @@ export class HomePage {
     public auth: Auth,
     private storageProvider: LocalStorage,
     private loadingCtrl: LoadingController
-    ) {
-  
+    ) {}
 
-  }
    ionViewDidLoad(){
     let loader = this.loadingCtrl.create({
       content: "Authentication...",
     });
-    loader.present();
-
- 
-     this.storageProvider.getTokenFirstTime().then(token=>{
-        this.auth.checkTokenToLogin(token).subscribe(
-          validToken=> {
-            this.navCtrl.setRoot(MainPage),
-            loader.dismiss();
-
-          },
-          err=> {
-            loader.dismiss();
-            console.log(err)
-          }
-        )
-      
-    })
-
-  }
-  login(email, password){
-    this.auth.login(email, password)
-        .subscribe(
-            logged => {
-              this.storageProvider.saveToken(logged).
-              then(done=>{
-                 this.navCtrl.setRoot(MainPage)
-              }).catch(err=>{
-                alert('Can not save Token')
-              });
+     this.storageProvider.getTokenFirstTime().then(token => {
+       if (token){
+            loader.present();
+            this.auth.checkTokenToLogin(token).subscribe(
+              validToken => {
+                this.navCtrl.setRoot(MainPage),
+                loader.dismiss();
             },
-            err => console.log('Error'),
-            () => console.log('Authentication Complete')
-          );
+            err=> {
+              loader.dismiss();
+              console.log(err)
+            }
+          )
+       }
+        else
+          loader.dismiss();
+      })
+    }
+
+   login(email: string, password: string): void{
+     this.auth.login(email, password)
+          .subscribe( logged => { 
+               this.storageProvider.saveToken(logged)
+               .then(tokenSaved => this.navCtrl.setRoot(MainPage))
+               .catch(err=> console.log(err))
+              },
+              err => console.log('Error'),
+              () => console.log('Authentication Complete')
+            );
 
   }
    register(email, password){
