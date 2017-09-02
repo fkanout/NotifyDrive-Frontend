@@ -1,5 +1,8 @@
 {
   "name": "notifyDriver",
   "app_id": "9411a017",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
 }
