@@ -5,7 +5,7 @@ NotifyDriver - FrontEnd
 
 ## About
 
-Notify Driver is a mobile app that allows drivers and road users to get in touch in case a parked car is either disturbing or facing an issue.
+Notify Driver is a hybrid mobile app (iOS-Android) that allows drivers and road users to get in touch in case a parked car is either disturbing or facing an issue.
 
 ## Use cases
 
